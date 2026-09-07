@@ -1,0 +1,31 @@
+# Native Modules المبنية (لا ترفعها)
+native/build/
+*.node
+
+# ملفات Bytecode (لا ترفعها)
+*.jsc
+
+# مفاتيح سرية (مهم جدًا!)
+serviceAccountKey.json
+config.json
+.env
+
+# مجلدات Node.js
+node_modules/
+
+# ملفات النظام
+.DS_Store
+Thumbs.db
+*.log
+
+# ملفات البناء المؤقتة
+*.o
+*.obj
+*.exe
+*.dll
+*.lib
+
+# Electron build outputs
+dist/
+out/
+release/
