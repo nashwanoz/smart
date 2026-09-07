@@ -1,0 +1,16 @@
+{
+  "name": "secure-memory-native",
+  "version": "1.0.0",
+  "description": "Native module for memory protection",
+  "main": "build/Release/secure_memory.node",
+  "scripts": {
+    "build": "node-gyp rebuild",
+    "configure": "node-gyp configure"
+  },
+  "dependencies": {
+    "node-addon-api": "^7.0.0"
+  },
+  "devDependencies": {
+    "node-gyp": "^10.0.0"
+  }
+}
