@@ -1,0 +1,44 @@
+# ملف: .github/workflows/build-native.yml
+
+name: Build Native Module
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:  # تشغيل يدوي
+
+jobs:
+  build-windows:
+    runs-on: windows-latest  # Windows مع Build Tools جاهزة
+    
+    steps:
+      # 1. تحميل الكود
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      # 2. تثبيت Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      
+      # 3. تثبيت المتطلبات
+      - name: Install dependencies
+        run: |
+          cd native
+          npm install
+      
+      # 4. بناء Native Module
+      - name: Build Native Module
+        run: |
+          cd native
+          npx node-gyp configure
+          npx node-gyp build
+      
+      # 5. رفع الملف الناتج
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: secure-memory-windows
+          path: native/build/Release/secure_memory.node
+          retention-days: 30
